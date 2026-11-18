@@ -53,3 +53,17 @@ p.textContent = '<img src="x" onerror="console.log(\'Attack!\')">';
 // 9. Dagens rätt = den billigaste lunchen. Använd filter och billigast (från meny.js)
 //    och markeraDagensRatt.
 // TODO
+const menuContainer = document.querySelector<HTMLElement>("#meny-lista");
+const menuHeading = document.querySelector<HTMLElement>("#meny-rubrik");
+
+if (menuContainer && menuHeading) {
+  visaMeny(menuContainer, meny);
+  uppdateraRubrik(menuHeading, meny.length);
+
+  const lunches = meny.filter(dish => dish.kategori === "lunch");
+  const cheapestLunch = billigast(lunches);
+
+  if (cheapestLunch) {
+    markeraDagensRatt(menuContainer, cheapestLunch.id);
+  }
+}
