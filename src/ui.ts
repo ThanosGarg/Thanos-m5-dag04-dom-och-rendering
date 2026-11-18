@@ -51,7 +51,6 @@ for (const dish of ratter) {
   container.append(card);
 }
 }
-
 // 3. Sätt rubrikens text: "Meny (8 rätter)". Ett enda: "Meny (1 rätt)".
 export function uppdateraRubrik(element: HTMLElement, antal: number): void {
   // TODO
@@ -66,4 +65,9 @@ export function uppdateraRubrik(element: HTMLElement, antal: number): void {
 //    data-id, och inte på något annat kort. Anropas igen = markeringen flyttas.
 export function markeraDagensRatt(container: HTMLElement, id: number): void {
   // TODO
+  const cards = container.querySelectorAll("article");
+  for (const card of cards) {
+    const isSelected = card.dataset.id === String(id);
+    card.classList.toggle("dagens", isSelected);
+  }
 }
