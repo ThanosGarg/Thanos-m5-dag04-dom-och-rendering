@@ -55,6 +55,11 @@ for (const dish of ratter) {
 // 3. Sätt rubrikens text: "Meny (8 rätter)". Ett enda: "Meny (1 rätt)".
 export function uppdateraRubrik(element: HTMLElement, antal: number): void {
   // TODO
+  if (antal === 1) {
+    element.textContent = "Meny (1 rätt)";
+  } else {
+    element.textContent = `Meny (${antal} rätter)`;
+  }
 }
 
 // 4. Markera EN rätt som dagens rätt: klassen "dagens" ska finnas på kortet med rätt
