@@ -13,6 +13,25 @@ import type { Ratt } from "./typer";
 //    </article>
 export function skapaRattKort(ratt: Ratt): HTMLElement {
   // TODO
+  const card = document.createElement("article");
+  card.dataset.id = String(ratt.id);
+  const image = document.createElement("img");
+  image.src = ratt.bild ?? "";
+  image.alt = `Illustration av ${ratt.namn.toLowerCase()}`;
+
+  const heading = document.createElement("h3");
+  heading.textContent = ratt.namn;
+
+  const description = document.createElement("p");
+  description.textContent = ratt.beskrivning ?? "";
+
+  const price = document.createElement("p");
+  price.classList.add("pris");
+  price.textContent = formateraPris(ratt.pris);
+
+  card.append(image, heading, description, price);
+
+  return card;
 }
 
 // 2. Töm containern och lägg in ett kort per rätt.
